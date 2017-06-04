@@ -115,6 +115,21 @@ typedef NS_ENUM(NSInteger,ImageBlurEffect) {
     
 }
 
+- (void)method22222
+{
+    UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVibrancyEffect *effect2 = [UIVibrancyEffect effectForBlurEffect:effect];
+    UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect2];
+    effectView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
+    UIView *yellowView = [[UIView alloc] init];
+    yellowView.backgroundColor = [UIColor redColor];
+    yellowView.frame = effectView.frame;
+    [effectView.contentView addSubview:yellowView];
+    
+    [self.imageView addSubview:effectView];
+    
+}
+
 - (void)method3
 {
     //使用这个方法会略有延迟，先显示原图，等原图改好之后才变成blurImage,因为此方法使用了异步，此时imageNamed后会是原图，等模糊了之后，才在主线程更新，如果想使用此方法，且不出现闪一下原图，需要都在主线程操作。或者使用下面的方法
